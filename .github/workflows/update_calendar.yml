@@ -1,0 +1,29 @@
+name: Update calendar
+on:
+  schedule:
+    - cron: "0 0 1 * *"
+    - cron: "0 0 * * 1"
+  workflow_dispatch:
+
+jobs:
+  update_calendar:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+          cache: "yarn"
+      - run: yarn --frozen-lockfile
+      - run: yarn start
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          commit-message: "update: new calendar"
+          title: Update calendar
+          body: Update calendar
+          branch: update-calendar
