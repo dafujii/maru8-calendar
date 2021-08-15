@@ -1,0 +1,8 @@
+{
+  "name": "maru8-calendar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/dafujii/maru8-calendar",
+  "author": "dafujii <dafujii.k@gmail.com>",
+  "license": "MIT"
+}
